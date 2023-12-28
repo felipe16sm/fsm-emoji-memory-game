@@ -29,6 +29,24 @@ const drawEmojisPositions = (emojis) => {
   return drawedEmojisList;
 };
 
-const drawedEmojis = drawEmojisPositions(emojis);
+const initialize = () => {
+  document.querySelector(".container").innerHTML = "";
 
-console.log(drawedEmojis);
+  const drawedEmojis = drawEmojisPositions(emojis);
+
+  const cards = [];
+
+  drawedEmojis.forEach((drawedEmoji) => {
+    const card = new Card(drawedEmoji);
+
+    cards.push(card);
+  });
+
+  new CardList(cards);
+};
+
+initialize();
+
+document.addEventListener("initialize", () => {
+  initialize();
+});
