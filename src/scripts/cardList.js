@@ -56,7 +56,18 @@ class CardList {
 
         this.selectedCards = [];
         this.loading = false;
+
+        this.verifyVictory();
       }, 500);
+    }
+  }
+
+  verifyVictory() {
+    const openedCards = document.querySelectorAll(".card-open");
+
+    if (this.cards.length === openedCards.length) {
+      const victoryEvent = new CustomEvent("openGameOverModal");
+      document.querySelector(".game-over-modal").dispatchEvent(victoryEvent);
     }
   }
 
